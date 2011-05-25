@@ -32,9 +32,27 @@
 	if (navBarEnabled) {
 		barFrame = self.navigationController.navigationBar.frame;
 	}
-	CGRect appFrame = [UIScreen mainScreen].applicationFrame;
 	CGFloat yStart = barFrame.origin.y + barFrame.size.height;
-	return CGRectMake(0, yStart, appFrame.size.width, appFrame.size.height - barFrame.size.height);
+
+//    NSLog(@"yStart : %f, appFrame width: %f, appFrame height: %f, bar frame heigh: %f", yStart, appFrame.size.width, appFrame.size.height, barFrame.size.height);
+//	return CGRectMake(0, yStart, appFrame.size.width, appFrame.size.height - barFrame.size.height);
+    CGRect scRect = [[UIScreen mainScreen] applicationFrame]; 
+    BOOL isPortrait = [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait;
+    CGFloat width = (isPortrait ? scRect.size.width : scRect.size.height);
+    CGFloat height = (isPortrait ? scRect.size.height : scRect.size.width);
+    return CGRectMake(0, yStart, width, height - barFrame.size.height);    
+    //
+//	CGFloat yStart = barFrame.origin.y + barFrame.size.height;
+//    //
+//    
+//    if(self.view){
+//        CGFloat width = CGRectGetWidth(self.view.bounds);
+//        CGFloat height = CGRectGetHeight(self.view.bounds);
+//        return CGRectMake(0, yStart, width, height - barFrame.size.height);
+//    }else{
+//        CGRect appFrame = [UIScreen mainScreen].applicationFrame;        
+//        return CGRectMake(0, yStart, appFrame.size.width, appFrame.size.height - barFrame.size.height);    
+//    }
 }
 
 
@@ -125,7 +143,7 @@
 	
 	if ([UVSession currentSession].isModal) {
 		UIBarButtonItem *exitButton = [[UIBarButtonItem alloc]
-									   initWithTitle:@"Close"
+									   initWithTitle:@"Fermer"
 									   style:UIBarButtonItemStylePlain
 									   target:self
 									   action:@selector(dismissUserVoice)];
@@ -181,7 +199,7 @@
 // Add a highlight row at the top. You need to separately add a dark shadow via
 // the table separator.
 - (void)addHighlightToCell:(UITableViewCell *)cell {
-	UIView *highlight = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+	UIView *highlight = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 1)];
 	highlight.backgroundColor = [UVStyleSheet topSeparatorColor];
 	highlight.opaque = YES;
 	[cell.contentView addSubview:highlight];
@@ -214,6 +232,13 @@
 	self.activityIndicator = nil;
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
+        return YES;
+    }
+    return NO;
+    
+}
 
 - (void)dealloc {
     [super dealloc];

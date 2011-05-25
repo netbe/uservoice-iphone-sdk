@@ -302,7 +302,7 @@
 	//NSLog(@"textEditorShouldBeginEditing");
 	UIView *headerView = (UIView *)self.tableView.tableHeaderView;	
 	NSInteger height = self.view.bounds.size.height - 216;
-	CGRect frame = CGRectMake(0, 10, 320, height);
+	CGRect frame = CGRectMake(0, 10, ORIENTATIONWIDTH, height);
 	UIView *textBar = [headerView viewWithTag:UV_SEARCH_TEXTBAR];
 	
 	// Maximize header view to allow text editor to grow (leaving room for keyboard) 216
@@ -313,7 +313,7 @@
 	
 	textBar.frame = frame;
 	textBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];		
-	frame = CGRectMake(0, 0, 320, 40);
+	frame = CGRectMake(0, 0, ORIENTATIONWIDTH, 40);
 	theTextEditor.frame = frame;  // (may not actually need to change this, since bg is white)
 	theTextEditor.backgroundColor = [UIColor whiteColor];	
 	
@@ -348,7 +348,7 @@
 	
 	// Minimize text editor and header
 	[UIView beginAnimations:@"shrinkHeader" context:nil];
-	textBar.frame = CGRectMake(0, 10, 320, 40);
+	textBar.frame = CGRectMake(0, 10, ORIENTATIONWIDTH, 40);
 	textBar.backgroundColor = [UIColor whiteColor];
 	
 	[self setCellsEnabled:YES];
@@ -380,7 +380,7 @@
 	[self addShadowSeparatorToTableView:theTableView];
 	
 	NSInteger headerHeight = [self supportsSearch] ? 50 : 10;
-	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, headerHeight)];  
+	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, headerHeight)];  
 	headerView.backgroundColor = [UIColor clearColor];
 	
 	UIImage *shadow = [UIImage imageNamed:@"dropshadow_top_20.png"];	
@@ -390,11 +390,11 @@
 
 	if ([self supportsSearch]) {		
 		// Add text editor to table header
-		UIView *textBar = [[UIView alloc] initWithFrame:CGRectMake(0, 10, 320, 40)];
+		UIView *textBar = [[UIView alloc] initWithFrame:CGRectMake(0, 10, ORIENTATIONWIDTH, 40)];
 		textBar.backgroundColor = [UIColor whiteColor];
 		textBar.tag = UV_SEARCH_TEXTBAR;
 		
-		_textEditor = [[UVTextEditor alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+		_textEditor = [[UVTextEditor alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 40)];
 		_textEditor.delegate = self;
 		_textEditor.autocorrectionType = UITextAutocorrectionTypeYes;
 		_textEditor.minNumberOfLines = 1;
@@ -415,7 +415,7 @@
 		theTableView.tableFooterView = [UVFooterView footerViewForController:self];
 		
 	} else {
-		UIView *bottomShadow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
+		UIView *bottomShadow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 10)];
 		UIImage *shadow = [UIImage imageNamed:@"dropshadow_bottom_30.png"];
 		UIImageView *shadowView = [[UIImageView alloc] initWithImage:shadow];
 		[bottomShadow addSubview:shadowView];	

@@ -10,16 +10,18 @@
 #import "UVStyleSheet.h"
 #import <QuartzCore/QuartzCore.h>
 
+
+
 @implementation UVButtonWithIndex
 
 @synthesize index = _index, normalImage = _normalImage, highlightedImage = _highlightedImage;
 
 - (id)initWithIndex:(NSInteger)index andFrame:(CGRect)theFrame {
-	if (self = [[super class] buttonWithType:UIButtonTypeCustom]) {
+	if ((self = [[super class] buttonWithType:UIButtonTypeCustom])) {
 		self.index = index;
 		self.opaque = YES;
 		CGFloat boundsX = theFrame.origin.x;	
-		self.frame = CGRectMake(boundsX-10, 0, 320, 71); // position in the parent view and set the size of the button
+		self.frame = CGRectMake(boundsX-10, 0, ORIENTATIONWIDTH, 71); // position in the parent view and set the size of the button
 		
 		UIView *drawingView = [[UIView alloc] initWithFrame:theFrame];
 		BOOL darkZebra = index % 2 == 0;
@@ -48,7 +50,7 @@
 		[drawingView release];
 		
 		// Highlight row at the top (dark shadow is already taken care of by table separator)
-		UIView *highlight = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+		UIView *highlight = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 1)];
 		highlight.backgroundColor = [UVStyleSheet topSeparatorColor];
 		highlight.opaque = YES;
 		[self addSubview:highlight];

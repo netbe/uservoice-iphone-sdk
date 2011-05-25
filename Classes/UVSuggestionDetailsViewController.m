@@ -37,7 +37,7 @@
 @synthesize suggestion, innerTableView;
 
 - (id)initWithSuggestion:(UVSuggestion *)theSuggestion {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		self.suggestion = theSuggestion;
 	}
 	return self;
@@ -167,7 +167,7 @@
 	[self removeBackgroundFromCell:cell];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, 0, 320, 72)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, 0, ORIENTATIONWIDTH, 72)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -236,7 +236,7 @@
 	[self removeBackgroundFromCell:cell];
 	NSInteger height = [self textSize].height > 0 ? [self textSize].height + 10 : 0;
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, 0, 320, height)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, 0, ORIENTATIONWIDTH, height)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -278,7 +278,7 @@
 	[self removeBackgroundFromCell:cell];
 	
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 75)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 75)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -456,7 +456,7 @@
 	
 	NSInteger height = MAX([self titleSize].height + 347, 383);
 	height += [self textSize].height > 0 ? [self textSize].height + 10 : 0;
-	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, height)];  
+	UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, height)];  
 	headerView.backgroundColor = [UIColor clearColor];
 	
 	UIImage *shadow = [UIImage imageNamed:@"dropshadow_top_20.png"];	
@@ -464,7 +464,7 @@
 	[headerView addSubview:shadowView];	
 	[shadowView release];
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 320, height)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, ORIENTATIONWIDTH, height)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[headerView addSubview:bg];
 	[bg release];
@@ -497,7 +497,7 @@
 	[headerView addSubview:label];
 	[label release];
 	NSInteger yOffset = MAX([self titleSize].height + 55, 90);
-	UITableView *theInnerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOffset, 320, MAX([self titleSize].height + 273, 313)) 
+	UITableView *theInnerTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, yOffset, ORIENTATIONWIDTH, MAX([self titleSize].height + 273, 313)) 
 																  style:UITableViewStyleGrouped];
 	theInnerTableView.dataSource = self;
 	theInnerTableView.delegate = self;

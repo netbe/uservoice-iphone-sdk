@@ -159,7 +159,7 @@
 	// Maximize header view to allow text editor to grow (leaving room for keyboard)
 	[UIView beginAnimations:@"growHeader" context:nil];
 	NSInteger height = self.view.bounds.size.height - 216;
-	CGRect frame = CGRectMake(0, 0, 320, height);
+	CGRect frame = CGRectMake(0, 0, ORIENTATIONWIDTH, height);
 	UIView *textBar = (UIView *)self.tableView.tableHeaderView;
 	textBar.frame = frame;
 	textBar.backgroundColor = [UIColor whiteColor];
@@ -174,7 +174,7 @@
 	[UIView beginAnimations:@"shrinkHeader" context:nil];
 	theTextEditor.frame = CGRectMake(5, 0, 315, 40);
 	UIView *textBar = (UIView *)self.tableView.tableHeaderView;
-	textBar.frame = CGRectMake(0, 0, 320, 40);
+	textBar.frame = CGRectMake(0, 0, ORIENTATIONWIDTH, 40);
 	theTextEditor.frame = CGRectMake(5, 0, 315, 40);
 	[UIView commitAnimations];
 }
@@ -276,7 +276,7 @@
 	[self addHighlightToCell:cell];
 
 	// Can't use built-in textLabel, as this forces a white background
-	UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 27, 320, 16)];
+	UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 27, ORIENTATIONWIDTH, 16)];
 	textLabel.text = @"Load more comments...";
 	textLabel.textColor = [UIColor darkGrayColor];
 	textLabel.backgroundColor = [UIColor clearColor];
@@ -362,7 +362,7 @@
 	[self addShadowSeparatorToTableView:theTableView];
 
 	// Add text editor to table header
-	UIView *textBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+	UIView *textBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 40)];
 	textBar.backgroundColor = [UIColor whiteColor];
 	// TTSTYLE(commentTextBar)
 	UVTextEditor *theTextEditor = [[UVTextEditor alloc] initWithFrame:CGRectMake(5, 0, 315, 40)];
@@ -381,7 +381,7 @@
 	[textBar release];
 
 	// Add empty footer, to suppress blank cells (with separators) after actual content
-	UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 0)];
+	UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 0)];
 	theTableView.tableFooterView = footer;
 	[footer release];
 	

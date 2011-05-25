@@ -16,16 +16,22 @@
 @synthesize heightOffset;
 
 - (id)initWithText: (NSString *)text {
-	if (self = [super init]) {
-		CGRect frame = [UIApplication sharedApplication].keyWindow.bounds;
-		self.frame = frame;
+	if ((self = [super init])) {
+        CGRect frame = [UIApplication sharedApplication].keyWindow.bounds;
+        BOOL isPortrait = [[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait;
+        CGFloat width = (isPortrait ? frame.size.width : frame.size.height);
+        CGFloat height = (isPortrait ? frame.size.height : frame.size.width);
+        
+        CGRect corretedFrame = CGRectMake(0, 0, width, height);
+        
+		self.frame = corretedFrame;
 		UIView *backgroundView = [[UIView alloc] initWithFrame:self.bounds];
 		backgroundView.backgroundColor = [UIColor blackColor];
 		backgroundView.alpha = 0.4;
 		[self addSubview:backgroundView];
 		[backgroundView release];
 		
-		UIView *activityFrame = [[UIView alloc] initWithFrame:CGRectMake((frame.size.width - 120) / 2, 100, 120, 120)];
+		UIView *activityFrame = [[UIView alloc] initWithFrame:CGRectMake((self.frame.size.width - ORIENTATIONWIDTH - 200) / 2, ORIENTATIONWIDTH - 220, ORIENTATIONWIDTH - 200, ORIENTATIONWIDTH - 200)];
 		activityFrame.backgroundColor = [UIColor blackColor];
 		activityFrame.alpha = 0.9;
 		activityFrame.layer.cornerRadius = 10;
@@ -36,7 +42,7 @@
 		[activityFrame addSubview:activity];
 		[activity release];
 		
-		UILabel *activityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 120, 20)];
+		UILabel *activityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, ORIENTATIONWIDTH - 200, 20)];
 		activityLabel.text = text;
 		activityLabel.textColor = [UIColor whiteColor];
 		activityLabel.backgroundColor = nil;
@@ -53,7 +59,7 @@
 }
 
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		[self initWithText: @"Loading..."];
 	}
 	

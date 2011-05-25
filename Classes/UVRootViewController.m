@@ -27,14 +27,14 @@
 }
 
 - (id)initWithSsoToken:(NSString *)aToken {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		self.ssoToken = aToken;
 	}
 	return self;
 }
 
 - (id)initWithEmail:(NSString *)anEmail andGUID:(NSString *)aGUID andName:(NSString *)aDisplayName {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		self.email = anEmail;
 		self.guid = aGUID;
 		self.displayName = aDisplayName;
@@ -135,6 +135,7 @@
 	[super loadView];
 	
 	CGRect frame = [self contentFrameWithNavBar:NO];
+
 	UIView *contentView = [[UIView alloc] initWithFrame:frame];
 	
 	UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"uv_splash.png"]];

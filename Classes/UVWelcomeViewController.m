@@ -96,7 +96,7 @@
 	[self removeBackgroundFromCell:cell];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 		
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, 320, 55)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, ORIENTATIONWIDTH, 55)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -142,7 +142,7 @@
 	[self removeBackgroundFromCell:cell];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, 320, 55)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, ORIENTATIONWIDTH, 55)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -191,7 +191,7 @@
 	[self removeBackgroundFromCell:cell];	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, 320, 80)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, ORIENTATIONWIDTH, 80)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -237,7 +237,7 @@
 	[self removeBackgroundFromCell:cell];	
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
-	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, 320, 11)];		
+	UIView *bg = [[UILabel alloc] initWithFrame:CGRectMake(-10, -10, ORIENTATIONWIDTH, 11)];		
 	bg.backgroundColor = [UVStyleSheet lightBgColor];
 	[cell.contentView addSubview:bg];
 	[bg release];
@@ -245,7 +245,7 @@
 
 - (UIView *)viewWithHeader:(NSString *)header subheader:(NSString *)subheader {
 	CGFloat height = [self heightForViewWithHeader:header subheader:subheader];
-	UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, height)] autorelease];
+	UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, height)] autorelease];
 	headerView.backgroundColor = [UVStyleSheet lightBgColor];
 	
 	UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 280, 35)];
@@ -400,7 +400,7 @@
 	_tableView.sectionFooterHeight = 0.0;
 	_tableView.sectionHeaderHeight = 0.0;
 	
-	UIView *topShadow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];  
+	UIView *topShadow = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 10)];  
 	UIImage *shadow = [UIImage imageNamed:@"dropshadow_top_20.png"];
 	
 	UIImageView *shadowView = [[UIImageView alloc] initWithImage:shadow];

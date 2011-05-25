@@ -77,7 +77,7 @@
 }
 
 - (UIView *)createHeaderView {
-	UIView *header = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 84)] autorelease];
+	UIView *header = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 84)] autorelease];
 	header.backgroundColor = [UIColor clearColor];
 	
 	// Name

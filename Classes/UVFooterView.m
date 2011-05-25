@@ -41,7 +41,7 @@
 }
 
 + (UIView *)getHeaderView {
-	UIView *bottomShadow = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)] autorelease];
+	UIView *bottomShadow = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 10)] autorelease];
 	UIImage *shadow = [UIImage imageNamed:@"dropshadow_bottom_30.png"];
 	UIImageView *shadowView = [[[UIImageView alloc] initWithImage:shadow] autorelease];
 	[bottomShadow addSubview:shadowView];	
@@ -49,7 +49,7 @@
 }
 
 + (UVFooterView *)footerViewForController:(UVBaseViewController *)controller {
-	UVFooterView *footer = [[[UVFooterView alloc ]initWithFrame:CGRectMake(0, 0, 320, [UVFooterView heightForFooter])] autorelease];
+	UVFooterView *footer = [[[UVFooterView alloc ]initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, [UVFooterView heightForFooter])] autorelease];
 	footer.controller = controller;
 	
 	UITableView *theTableView = [[UITableView alloc] initWithFrame:footer.bounds style:UITableViewStyleGrouped];
@@ -60,8 +60,8 @@
 	theTableView.sectionFooterHeight = 8.0;		
 	theTableView.tableHeaderView = [self getHeaderView];
 		
-	UIView *tableFooter = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 25)] autorelease];
-	UILabel *poweredBy = [[[UILabel alloc] initWithFrame:CGRectMake(30, 10, 240, 14)] autorelease];
+	UIView *tableFooter = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 25)] autorelease];
+	UILabel *poweredBy = [[[UILabel alloc] initWithFrame:CGRectMake(30, 10, ORIENTATIONWIDTH - 80, 14)] autorelease];
 	poweredBy.text = @"Feedback powered by UserVoice";
 	poweredBy.font = [UIFont systemFontOfSize:14.0];
 	poweredBy.textColor = [UIColor colorWithRed:0.278 green:0.341 blue:0.435 alpha:1.0];
@@ -69,7 +69,7 @@
 	poweredBy.textAlignment = UITextAlignmentCenter;
 	[tableFooter addSubview:poweredBy];
 	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-	infoButton.center = CGPointMake(270, 14);
+	infoButton.center = CGPointMake(ORIENTATIONWIDTH - 50, 14);
 	[infoButton addTarget:footer action:@selector(infoButtonTapped) forControlEvents:UIControlEventTouchUpInside];
 	[tableFooter addSubview:infoButton];
 	

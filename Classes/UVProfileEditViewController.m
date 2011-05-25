@@ -227,7 +227,7 @@
 
 - (UIView *)tableView:(UITableView *)theTableView viewForFooterInSection:(NSInteger)section {
 	if (section == UV_PROFILE_SECTION_DETAILS) {
-		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 40)];
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 7, 284, 30)];
 		
 		label.text = @"Changing your email address will require it to be confirmed again.";
@@ -243,7 +243,7 @@
 
 	} else if (section == UV_PROFILE_SECTION_LOGOUT) {
 		if ([self.user hasUnconfirmedEmail]) {
-			UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+			UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ORIENTATIONWIDTH, 30)];
 			UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(38, 0, 300, 40)];
 			
 			UIImageView *icon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"uv_alert.png"]];

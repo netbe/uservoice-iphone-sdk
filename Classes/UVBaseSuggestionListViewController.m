@@ -90,7 +90,7 @@
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
 	// Can't use built-in textLabel, as this forces a white background
-	UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 26, 320, 18)];
+	UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 26, ORIENTATIONWIDTH, 18)];
 	textLabel.text = @"Load more ideas...";
 	textLabel.textColor = [UIColor blackColor];
 	textLabel.backgroundColor = [UIColor clearColor];

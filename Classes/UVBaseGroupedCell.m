@@ -10,10 +10,11 @@
 
 #define UV_BASE_GROUPED_CELL_BG 50;
 
+
 @implementation UVBaseGroupedCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
         // Initialization code
 		self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
@@ -24,7 +25,7 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-	UIView *selectedBackView = [[[UIView alloc] initWithFrame:CGRectMake(-10, 0, 320, 71)] autorelease];
+	UIView *selectedBackView = [[[UIView alloc] initWithFrame:CGRectMake(-10, 0, ORIENTATIONWIDTH, 71)] autorelease];
 	selectedBackView.backgroundColor = [UIColor clearColor];
 	self.selectedBackgroundView = selectedBackView;
 }
